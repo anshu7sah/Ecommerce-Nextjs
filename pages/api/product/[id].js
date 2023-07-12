@@ -8,8 +8,8 @@ router.get(async (req, res) => {
   try {
     await mongoConnect();
     const id = req.query.id;
-    const style = req.query.style;
-    const size = req.query.size;
+    const style = req.query.style || 0;
+    const size = req.query.size || 0;
 
     const product = await Product.findById(id).lean();
 
@@ -33,6 +33,8 @@ router.get(async (req, res) => {
       price,
       priceBefore,
       discount,
+      category: product.category,
+      subCategories: product.subCategories,
       quantity: product?.subProducts[style].sizes[size].qty,
     });
   } catch (error) {

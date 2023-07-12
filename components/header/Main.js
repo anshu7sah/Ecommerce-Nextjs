@@ -7,7 +7,8 @@ import { FaOpencart } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
 const Main = () => {
-  const { cart } = useSelector((state) => ({ ...state }));
+  const { cartItems } = useSelector((state) => state.cart);
+
   return (
     <div className={styles.main}>
       <div className={styles.main__container}>
@@ -22,7 +23,7 @@ const Main = () => {
         </div>
         <Link href={"/cart"} className={styles.cart}>
           <FaOpencart />
-          <span>{cart.length}</span>
+          <span>{cartItems.length}</span>
         </Link>
       </div>
     </div>

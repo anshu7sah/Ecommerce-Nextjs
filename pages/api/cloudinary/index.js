@@ -30,7 +30,7 @@ router
         images.push(img);
         removeTmp(file.tempFilePath);
       }
-      res.status(201).json(images);
+      return res.status(201).json(images);
     } catch (error) {
       return res.status(500).json({ message: error.message });
     }
@@ -40,7 +40,7 @@ router.delete(async (req, res) => {
   let image_id = req.body.public_id;
   cloudinary.v2.uploader.destroy(image_id, (err, res) => {
     if (err) return res.status(400).json({ success: false, err });
-    res.json({ success: false });
+    return res.json({ success: true });
   });
 });
 
@@ -55,7 +55,7 @@ const uploadToCloudinaryHandler = async (file, path) => {
         if (err) {
           removeTmp(file.tempFilePath);
           console.log(err);
-          return res.json({ message: "Upload image failed" });
+          return res?.json({ message: "Upload image failed" });
         }
         resolve({
           url: res.secure_url,
