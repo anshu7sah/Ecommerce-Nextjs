@@ -50,7 +50,7 @@ export async function getServerSideProps(context) {
     slug,
   })
     .populate({ path: "category", model: Category })
-    .populate({ path: "subCategories._id", model: SubCategory })
+    .populate({ path: "subCategories", model: SubCategory })
     .populate({ path: "reviews.reviewBy", model: User })
     .lean();
 
