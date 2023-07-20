@@ -132,7 +132,9 @@ export default function dashboard({ users, orders, products }) {
                       </div>
                     </td>
                     <td>
-                      <SlEye />
+                      <Link href={`/order/${order._id}`}>
+                        <SlEye />
+                      </Link>
                     </td>
                   </tr>
                 ))}
@@ -152,10 +154,10 @@ export default function dashboard({ users, orders, products }) {
                       <div className={styles.user__img}>
                         <img src={user.image} alt="" />
                       </div>
-                    </td>
-                    <td>
-                      <h4>{user.name}</h4>
-                      <span>{user.email}</span>
+                      <td>
+                        <h4>{user.name}</h4>
+                        <span>{user.email}</span>
+                      </td>
                     </td>
                   </tr>
                 ))}
@@ -172,6 +174,7 @@ export async function getServerSideProps({ req }) {
   const users = await User.find().lean();
 
   const orders = await Order.find()
+
     .populate({ path: "user", model: User })
     .lean();
 

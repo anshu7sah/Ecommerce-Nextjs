@@ -41,35 +41,133 @@ function Row(props) {
             ? "Credit Card"
             : "Cash On Delivery"}
         </TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
+        <TableCell align="right">
+          {row.isPaid ? (
+            <img
+              src="../../../images/verified.png"
+              className={styles.verified}
+            />
+          ) : (
+            <img
+              src="../../../images/unverified.png"
+              className={styles.verified}
+            />
+          )}
+        </TableCell>
+        <TableCell align="right">
+          <span
+            className={
+              row.status == "Not Processed"
+                ? styles.not_processed
+                : row.status == "Processing"
+                ? styles.processing
+                : row.status == "Dispatched"
+                ? styles.dispatched
+                : row.status == "Cancelled"
+                ? styles.cancelled
+                : row.status == "Completed"
+                ? styles.completed
+                : ""
+            }
+          >
+            {row.status}
+          </span>
+        </TableCell>
+        <TableCell align="right">{row.couponApplied || "-"}</TableCell>
+        <TableCell align="right">
+          <b>${row.total}</b>
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
-                History
+                Order for
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell></TableCell>
+                    <TableCell>Full Name</TableCell>
+                    <TableCell>Email</TableCell>
+                    <TableCell align="right">Shipping Informations</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  <TableRow key={row.date}>
+                  <TableRow key={row.user._id}>
                     <TableCell component="th" scope="row">
-                      {row.date}
+                      <img
+                        src={row.user.image}
+                        alt=""
+                        className={styles.table__img}
+                      />
                     </TableCell>
-                    <TableCell>{row.customerId}</TableCell>
-                    <TableCell align="right">{row.amount}</TableCell>
+                    <TableCell>{row.user.name}</TableCell>
+                    <TableCell>{row.user.email}</TableCell>
                     <TableCell align="right">
-                      {Math.round(row.amount * row.price * 100) / 100}
+                      {row.shippingAddress.firstName}{" "}
+                      {row.shippingAddress.lastName} <br />
+                      {row.shippingAddress.address1} <br />
+                      {row.shippingAddress.address2} <br />
+                      {row.shippingAddress.state},{row.shippingAddress.city}{" "}
+                      <br />
+                      {row.shippingAddress.country} <br />
+                      {row.shippingAddress.zipCode} <br />
+                      {row.shippingAddress.phoneNumber} <br />
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </Box>
+          </Collapse>
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Box sx={{ margin: 1 }}>
+              <Typography variant="h6" gutterBottom component="div">
+                Order items
+              </Typography>
+              <Table size="small" aria-label="purchases">
+                <TableHead>
+                  <TableRow>
+                    <TableCell></TableCell>
+                    <TableCell>Name</TableCell>
+                    <TableCell>Size</TableCell>
+                    <TableCell>Price</TableCell>
+                    <TableCell>Qty</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {row.products.map((p) => (
+                    <TableRow key={p._id}>
+                      <TableCell component="th" scope="row">
+                        <img
+                          src={p.image}
+                          alt=""
+                          className={styles.table__productImg}
+                        />
+                      </TableCell>
+                      <TableCell>{p.name}</TableCell>
+                      <TableCell align="left">{p.size}</TableCell>
+                      <TableCell align="left">x{p.qty}</TableCell>
+                      <TableCell align="left">{p.price}$</TableCell>
+                    </TableRow>
+                  ))}
+                  <TableRow key={row._id}>
+                    <TableCell component="th" scope="row" align="left">
+                      <b style={{ fontSize: "20px" }}>Total</b>
+                    </TableCell>
+                    <TableCell></TableCell>
+                    <TableCell align="left"></TableCell>
+                    <TableCell align="left"></TableCell>
+                    <TableCell
+                      align="left"
+                      style={{ padding: "20px 0 20px 18px" }}
+                    >
+                      <b style={{ fontSize: "20px" }}>{row.total}$</b>
                     </TableCell>
                   </TableRow>
                 </TableBody>
@@ -103,7 +201,16 @@ Row.propTypes = {
 export default function CollapsibleTable({ rows }) {
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
+      <Typography
+        sx={{ flex: "1 1 100%" }}
+        variant="h6"
+        id="tableTitle"
+        component="div"
+        style={{ padding: "10px" }}
+      >
+        Orders
+      </Typography>
+      <Table aria-label="collapsible table" className={styles.table}>
         <TableHead>
           <TableRow>
             <TableCell />

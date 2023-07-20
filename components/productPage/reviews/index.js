@@ -3,8 +3,12 @@ import styles from "./styles.module.scss";
 import { useSession, signIn } from "next-auth/react";
 import AddReview from "./AddReview";
 import Table from "./Table";
+import { useState } from "react";
 const Reviews = ({ product }) => {
   const { data: session } = useSession();
+
+  const [reviews, setReviews] = useState(product.reviews);
+
   return (
     <div className={styles.reviews}>
       <div className={styles.reviews__container}>
@@ -20,7 +24,9 @@ const Reviews = ({ product }) => {
                 readOnly
                 style={{ color: "#FACF19" }}
               />
-              {product.rating == 0 ? "No review yet." : product.rating}
+              {product.rating == 0
+                ? "No review yet."
+                : product.rating.toFixed(2)}
             </div>
           </div>
           <div className={styles.reviews__stats_reviews}>
@@ -44,14 +50,14 @@ const Reviews = ({ product }) => {
           </div>
         </div>
         {session ? (
-          <AddReview product={product} />
+          <AddReview product={product} setReviews={setReviews} />
         ) : (
           <button className={styles.login_btn} onClick={() => signIn()}>
             Login to add review
           </button>
         )}
         <Table
-          reviews={product.reviews}
+          reviews={reviews}
           allSizes={product.allSizes}
           colors={product.colors}
         />

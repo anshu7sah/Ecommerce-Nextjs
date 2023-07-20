@@ -1,6 +1,6 @@
 import { createRouter } from "next-connect";
-import { mongoConnect, mongoDisconnect } from "../../../utils/db";
-import Product from "../../../models/Product";
+import Product from "../../../../models/Product";
+import { mongoConnect } from "../../../../utils/db";
 
 const router = createRouter();
 

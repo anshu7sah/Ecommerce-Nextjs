@@ -94,21 +94,22 @@ export async function getServerSideProps(context) {
     quantity: subProduct?.sizes[size].qty,
     ratings: [
       {
-        pecentage: 76,
+        pecentage: calculatePercentage("5"),
       },
       {
-        pecentage: 14,
+        pecentage: calculatePercentage("4"),
       },
       {
-        pecentage: 6,
+        pecentage: calculatePercentage("3"),
       },
       {
-        pecentage: 4,
+        pecentage: calculatePercentage("2"),
       },
       {
-        pecentage: 0,
+        pecentage: calculatePercentage("1"),
       },
     ],
+    reviews: product.reviews.reverse(),
     allSizes: product.subProducts
       .map((p) => {
         return p.sizes;
@@ -122,6 +123,18 @@ export async function getServerSideProps(context) {
           array.findIndex((e2) => e2.size === element.size) === index
       ),
   };
+  function calculatePercentage(num) {
+    return (
+      (product.reviews.reduce((a, review) => {
+        return (
+          a +
+          (review.rating == Number(num) || review.rating == Number(num) + 0.5)
+        );
+      }, 0) *
+        100) /
+      product.reviews.length
+    ).toFixed(1);
+  }
 
   await mongoDisconnect();
 

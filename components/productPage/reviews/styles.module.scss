@@ -72,6 +72,10 @@
     }
   }
   .login_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     width: 100%;
     height: 50px;
     background: $yellow-color;
@@ -79,6 +83,10 @@
     font-weight: 900;
     color: #fff;
     cursor: pointer;
+  }
+  .disabled {
+    cursor: not-allowed;
+    background: #cccccc4f;
   }
   &__add {
     margin-top: 1rem;
