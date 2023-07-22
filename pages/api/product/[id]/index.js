@@ -1,10 +1,11 @@
 import { createRouter } from "next-connect";
 import Product from "../../../../models/Product";
-import { mongoConnect } from "../../../../utils/db";
+import { mongoConnect, mongoDisconnect } from "../../../../utils/db";
 
 const router = createRouter();
 
 router.get(async (req, res) => {
+  console.log("anshu");
   try {
     await mongoConnect();
     const id = req.query.id;
