@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import Link from "next/link";
 import UserMenu from "./UserMenu";
 import { useSession } from "next-auth/react";
+import { FaBars } from "react-icons/fa";
+import TemporaryDrawer from "../sidebar";
 
 const Top = ({ country }) => {
   const { data: session } = useSession();
@@ -14,7 +16,9 @@ const Top = ({ country }) => {
   return (
     <div className={styles.top}>
       <div className={styles.top__container}>
-        <div></div>
+        <div className={styles.top__collapsing}>
+          <TemporaryDrawer />
+        </div>
         <ul className={styles.top__list}>
           <li className={styles.li}>
             <img src={country.flag} alt={country.name} />

@@ -26,6 +26,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-left: 0px;
+  }
+  &__collapsing {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: #666;
   }
   &__list {
     display: flex;
