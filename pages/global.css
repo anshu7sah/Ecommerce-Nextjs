@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+body {
+   font-family: 'Poppins', sans-serif;
+}
+:root {
+    /* fonts */
+    --font-lato: Lato;
+    --font-dm-sans: "DM Sans";
+    --description: Poppins;
+    --font-noto-sans: "Noto Sans";
+    --font-inter: Inter;
+
+    /* font sizes */
+    --font-size-sm: 14px;
+    --font-size-9xl: 28px;
+    --description-size: 12px;
+    --font-size-base: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-21xl: 40px;
+    --font-size-5xl: 24px;
+    --font-size-3xs: 10px;
+
+    /* Colors */
+    --white: #fff;
+    --color-darkslategray-100: #2b2e4a;
+    --color-whitesmoke-100: #f6f6f6;
+    --color-black: #000;
+    --dark: #0a142f;
+    --lift-blue: #0081fe;
+    --color-dimgray: #5f5f5f;
+
+    /* Gaps */
+    --gap-5xs: 8px;
+    --gap-mini: 15px;
+    --gap-3xs: 10px;
+
+    /* Paddings */
+    --padding-2xs: 11px;
+    --padding-lg: 18px;
+    --padding-xs: 12px;
+    --padding-sm: 14px;
+    --padding-13xl: 32px;
+
+    /* border radiuses */
+    --br-980xl: 999px;
+    --br-3xs: 10px;
+}
