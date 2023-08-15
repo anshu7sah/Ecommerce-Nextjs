@@ -7,6 +7,7 @@ import { Form, Formik } from "formik";
 import LoginInput from "../../components/inputs/loginInput";
 import CircledIconBtn from "../../components/button/circledIconBtn";
 import styles from "../../styles/profile.module.scss";
+import axios from "axios";
 export default function profile({ user, tab }) {
   const [current_password, setCurrent_Password] = useState("");
   const [password, setPassword] = useState("");
@@ -33,11 +34,12 @@ export default function profile({ user, tab }) {
 
   const changePasswordHandler = async () => {
     try {
-      const { data } = await axios.post("/api/user/changePassword", {
+      const { data } = await axios.post("/api/user/changepassword", {
         current_password,
         password,
         conf_password,
       });
+
       setError("");
       setSuccess(data.message);
     } catch (error) {

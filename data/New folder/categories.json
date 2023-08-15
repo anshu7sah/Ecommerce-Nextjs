@@ -1,0 +1,92 @@
+[{
+  "_id": {
+    "$oid": "64c1d84eb853ace45663fd1d"
+  },
+  "name": "smartphones",
+  "slug": "smartphones",
+  "createdAt": {
+    "$date": "2023-07-27T02:37:02.065Z"
+  },
+  "updatedAt": {
+    "$date": "2023-07-27T02:37:02.065Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62c2bdd58b564896ec16cc6b"
+  },
+  "name": "Gaming",
+  "slug": "gaming",
+  "createdAt": {
+    "$date": "2022-07-04T10:15:49.921Z"
+  },
+  "updatedAt": {
+    "$date": "2022-07-04T10:15:49.921Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62c46ff0062128444ad59193"
+  },
+  "name": "Women's Clothing",
+  "slug": "women's-clothing",
+  "createdAt": {
+    "$date": "2022-07-05T17:08:00.067Z"
+  },
+  "updatedAt": {
+    "$date": "2022-07-05T17:08:00.067Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62cfeb1e119f0cd432b478d6"
+  },
+  "name": "Men's Clothing",
+  "slug": "men's-clothing",
+  "createdAt": {
+    "$date": "2022-07-14T10:08:30.799Z"
+  },
+  "updatedAt": {
+    "$date": "2022-07-14T10:08:30.799Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62d69f9e60276c9915a995b8"
+  },
+  "name": "Women Clothing",
+  "slug": "women-clothing",
+  "createdAt": {
+    "$date": "2022-07-19T12:12:14.124Z"
+  },
+  "updatedAt": {
+    "$date": "2022-07-19T12:12:14.124Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "64c1dab7b853ace45663fd55"
+  },
+  "name": "Jewelery",
+  "slug": "jewelery",
+  "createdAt": {
+    "$date": "2023-07-27T02:47:19.182Z"
+  },
+  "updatedAt": {
+    "$date": "2023-07-27T02:47:19.182Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "64c1dac4b853ace45663fd5a"
+  },
+  "name": "Electronics",
+  "slug": "electronics",
+  "createdAt": {
+    "$date": "2023-07-27T02:47:32.030Z"
+  },
+  "updatedAt": {
+    "$date": "2023-07-27T02:47:32.030Z"
+  },
+  "__v": 0
+}]

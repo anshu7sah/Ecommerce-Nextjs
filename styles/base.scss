@@ -263,3 +263,25 @@ $cubic-bezier: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
   }
 }
+.scrollbar {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px !important;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px !important;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #888;
+  }
+}

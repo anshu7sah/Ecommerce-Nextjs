@@ -13,7 +13,7 @@ router
   .post(async (req, res) => {
     try {
       await mongoConnect();
-      console.log("Anhsu is very handsome");
+
       if (req.body.parent) {
         const parent = await Product.findById(req.body.parent);
         if (!parent) {

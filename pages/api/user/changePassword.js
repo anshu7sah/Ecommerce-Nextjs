@@ -21,12 +21,13 @@ router.use(auth).post(async (req, res) => {
       await user.updateOne({
         password: crypted_password,
       });
+
       return res.status(201).json({
         message:
           "You can use your social login credential with this new password for normal login !",
       });
     }
-    const isMatch = bcrypt.compare(current_password, user.password);
+    const isMatch = await bcrypt.compare(current_password, user.password);
     if (!isMatch) {
       return res.status(400).json({ message: "Current password is wrong" });
     }
@@ -36,9 +37,9 @@ router.use(auth).post(async (req, res) => {
         message: "New password and confirm password does not matches.",
       });
     }
-
+    console.log(crypted_password);
     await user.updateOne({
-      crypted_password,
+      password: crypted_password,
     });
 
     await mongoDisconnect();
