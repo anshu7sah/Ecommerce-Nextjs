@@ -52,3 +52,4 @@ const Main = ({ searchHandler }) => {
 };
 
 export default Main;
+
