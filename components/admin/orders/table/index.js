@@ -14,10 +14,17 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import styles from "./styles.module.scss";
+import axios from "axios";
 
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
+  const CancelApprovehandler = async (id) => {
+    try {
+      const { data } = await axios.put(`/api/admin/${id}/cancel`);
+      console.log(data);
+    } catch (error) {}
+  };
 
   return (
     <React.Fragment>
@@ -176,6 +183,15 @@ function Row(props) {
           </Collapse>
         </TableCell>
       </TableRow>
+      {row.cancelOrder && !row.confirmCancelOrder ? (
+        <>
+          <p>Requested For Canceling the Order</p>
+          <button onClick={() => CancelApprovehandler(row._id)}>Approve</button>
+          <button>Decline</button>
+        </>
+      ) : (
+        ""
+      )}
     </React.Fragment>
   );
 }

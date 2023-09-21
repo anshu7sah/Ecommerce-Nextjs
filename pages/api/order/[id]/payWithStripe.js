@@ -18,26 +18,33 @@ router.use(auth).post(async (req, res) => {
       description: "M74JJI Store",
       payment_method_types: ["card"],
       payment_method: id,
-      confirm: true,
+      // confirm: true,
+      metadata: {
+        id: order_id,
+      },
+    });
+    // console.log(payment);
+    res.status(200).json({
+      client_secret: payment.client_secret,
     });
 
-    const order = await Order.findById(order_id);
-    if (order) {
-      order.isPaid = true;
-      order.paidAt = Date.now();
-      order.paymentResult = {
-        id: payment.id,
-        status: payment.status,
-        email: payment.email_address,
-      };
+    // const order = await Order.findById(order_id);
+    // if (order) {
+    //   order.isPaid = true;
+    //   order.paidAt = Date.now();
+    //   order.paymentResult = {
+    //     id: payment.id,
+    //     status: payment.status,
+    //     email: payment.email_address,
+    //   };
 
-      await order.save();
-      res.status(201).json({
-        success: true,
-      });
-    } else {
-      res.status(404).json({ message: "Order not found" });
-    }
+    //   await order.save();
+    //   res.status(201).json({
+    //     success: true,
+    //   });
+    // } else {
+    //   res.status(404).json({ message: "Order not found" });
+    // }
 
     await mongoDisconnect();
   } catch (error) {

@@ -9,9 +9,23 @@ import Link from "next/link";
 import { FiExternalLink } from "react-icons/fi";
 import slugify from "slugify";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import axios from "axios";
 
 export default function orders({ user, tab, orders }) {
-  const router=useRouter();
+  const router = useRouter();
+  const [message, setMessage] = useState("");
+
+  const cancelOrderHandler = async (id) => {
+    try {
+      const { data } = await axios.put(`/api/order/${id}/cancel`);
+      console.log(data.message);
+      setMessage(data.message);
+    } catch (error) {
+      setMessage(error?.response?.data?.message);
+    }
+  };
+
   return (
     <Layout session={user} tab={tab}>
       <Head>
@@ -24,7 +38,14 @@ export default function orders({ user, tab, orders }) {
         <nav>
           <ul>
             {ordersLinks.map((link, i) => (
-              <li key={i} className={slugify(link.name,{lower:true})==router.query.q?styles.active:""}>
+              <li
+                key={i}
+                className={
+                  slugify(link.name, { lower: true }) == router.query.q
+                    ? styles.active
+                    : ""
+                }
+              >
                 <Link
                   href={`/profile/orders?filter=${
                     link.filter
@@ -48,6 +69,7 @@ export default function orders({ user, tab, orders }) {
               <td>Paid</td>
               <td>Status</td>
               <td>View</td>
+              <td>Actions</td>
             </tr>
           </thead>
           <tbody>
@@ -80,8 +102,14 @@ export default function orders({ user, tab, orders }) {
                     <FiExternalLink />
                   </Link>
                 </td>
+                <td>
+                  <button onClick={() => cancelOrderHandler(order._id)}>
+                    Cancel Order
+                  </button>
+                </td>
               </tr>
             ))}
+            {message ? <p>{message}</p> : ""}
           </tbody>
         </table>
       </div>

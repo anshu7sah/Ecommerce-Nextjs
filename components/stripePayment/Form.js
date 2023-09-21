@@ -25,6 +25,7 @@ export default function Form({ total, order_id }) {
   const [error, setError] = useState("");
   const stripe = useStripe();
   const elements = useElements();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { error, paymentMethod } = await stripe.createPaymentMethod({
@@ -38,9 +39,19 @@ export default function Form({ total, order_id }) {
           amount: total,
           id,
         });
+        const { paymentIntent, error } = await stripe.confirmCardPayment(
+          res.data.client_secret,
+          {
+            payment_method: { card: elements.getElement(CardElement) },
+          }
+        );
 
-        if (res.data.success) {
-          window.location.reload(false);
+        if (error) {
+          setError(error.message);
+        } else if (paymentIntent && paymentIntent.status == "succeeded") {
+          setTimeout(() => {
+            window.location.reload(false);
+          }, 1000);
         }
       } catch (error) {
         console.log("error in stripe request to backend", error);

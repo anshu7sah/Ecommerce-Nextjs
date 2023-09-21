@@ -114,6 +114,26 @@ const orderSchema = new mongoose.Schema(
     deliveredAt: {
       type: Date,
     },
+    cancelOrder: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    confirmCancelOrder: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    returnOrder: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    confirmReturnOrder: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
   {
     timestamps: true,

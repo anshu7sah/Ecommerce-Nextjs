@@ -7,7 +7,7 @@ import React from "react";
 export default function Header({ country, searchHandler }) {
   return (
     <header className={styles.header}>
-      <Ad />
+      {/* <Ad /> */}
       <Top country={country} />
       <Main searchHandler={searchHandler} />
     </header>

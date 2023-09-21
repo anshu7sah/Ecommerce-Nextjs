@@ -12,7 +12,7 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 
 export default function MainSwiper() {
   return (
-    <div className={styles.swiper}>
+    <div className={`${styles.swiper}`}>
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -30,7 +30,9 @@ export default function MainSwiper() {
       >
         {[...Array(10).keys()].map((i) => (
           <SwiperSlide key={i}>
-            <img src={`../../../images/swiper/${i + 1}.jpg`} alt="swiper" />
+            <div className={styles.imgGradient}>
+              <img src={`../../../images/swiper/${i + 1}.jpg`} alt="swiper" />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
