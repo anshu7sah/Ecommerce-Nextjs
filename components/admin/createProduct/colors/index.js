@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./styles.module.scss";
 import { ErrorMessage, useField } from "formik";
-import { ColorExtractor } from "react-color-extractor";
+import ColorThief from "colorthief";
 import { TbArrowUpRightCircle } from "react-icons/tb";
+
 export default function Colors({
   product,
   setProduct,
@@ -13,6 +14,19 @@ export default function Colors({
   const [toggle, setToggle] = useState(false);
   const [colors, setColors] = useState([]);
   const [field, meta] = useField(props);
+
+  useEffect(() => {
+    const colorThief = new ColorThief();
+
+    const img = new Image();
+    img.src = colorImage;
+    img.crossOrigin = "Anonymous"; // Enable cross-origin for the image
+
+    img.onload = () => {
+      const dominantColor = colorThief.getColor(img);
+      setColors([`rgb(${dominantColor.join(",")})`]);
+    };
+  }, [colorImage]);
 
   const renderSwatches = () => {
     return colors.map((color, i) => (
@@ -67,9 +81,9 @@ export default function Colors({
       />
       <div className={styles.colors__infos}></div>
       <div className={toggle ? styles.toggle : ""}>
-        <ColorExtractor getColors={(colors) => setColors(colors)}>
+        {/* <ColorExtractor getColors={(colors) => setColors(colors)}>
           <img src={colorImage} alt="" style={{ display: "none" }} />
-        </ColorExtractor>
+        </ColorExtractor> */}
         <div className={styles.wheel}>{renderSwatches()}</div>
       </div>
       {colors.length > 0 && (
