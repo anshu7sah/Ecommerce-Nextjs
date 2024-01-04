@@ -12,7 +12,7 @@ import { useState } from "react";
 import Infos from "../../components/productPage/infos";
 import Reviews from "../../components/productPage/reviews";
 
-export default function product({ product }) {
+export default function Product({ product }) {
   const [activeImg, setActiveImg] = useState("");
   return (
     <>

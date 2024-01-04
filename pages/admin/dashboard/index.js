@@ -13,7 +13,7 @@ import { SiProducthunt } from "react-icons/si";
 import { SlEye, SlHandbag } from "react-icons/sl";
 import Link from "next/link";
 
-export default function dashboard({ users, orders, products }) {
+export default function Dashboard({ users, orders, products }) {
   const { data: session } = useSession();
   return (
     <div>
@@ -148,8 +148,8 @@ export default function dashboard({ users, orders, products }) {
             </div>
             <table>
               <tbody>
-                {users.map((user) => (
-                  <tr>
+                {users.map((user, i) => (
+                  <tr key={i}>
                     <td className={styles.user}>
                       <div className={styles.user__img}>
                         <img src={user.image} alt="" />

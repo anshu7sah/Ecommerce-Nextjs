@@ -11,7 +11,7 @@ import LoginInput from "../../components/inputs/loginInput";
 import Dotloader from "../../components/loaders/dotLoader";
 import axios from "axios";
 
-const forgot = () => {
+const Forgot = () => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -91,4 +91,4 @@ const forgot = () => {
   );
 };
 
-export default forgot;
+export default Forgot;

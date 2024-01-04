@@ -24,7 +24,7 @@ function reducer(state, action) {
   }
 }
 
-export default function order({
+export default function Order({
   orderData,
   paypal_client_id,
   stripe_public_key,
@@ -208,7 +208,7 @@ export default function order({
           </div>
           <div className={styles.order__actions}>
             <div className={styles.order__address}>
-              <h1>Customer's Order</h1>
+              <h1>Customer&apos;s Order</h1>
               <div className={styles.order__address_user}>
                 <div className={styles.order__address_user_infos}>
                   <img src={orderData.user.image} alt="" />

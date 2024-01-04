@@ -51,7 +51,7 @@ const initialState = {
   shippingFee: "",
 };
 
-export default function create({ parents, categories }) {
+export default function Create({ parents, categories }) {
   const [product, setProduct] = useState(initialState);
   const [subs, setSubs] = useState(initialState);
   const [colorImage, setColorImage] = useState("");

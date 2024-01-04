@@ -10,7 +10,7 @@ import Products from "../components/checkout/products";
 import Payment from "../components/checkout/payment";
 import Summary from "../components/checkout/summary";
 
-export default function checkout({ cart, user }) {
+export default function Checkout({ cart, user }) {
   const [addresses, setAddresses] = useState(user?.address || []);
   const [paymentMethod, setPaymentMethod] = useState("");
 

@@ -72,6 +72,7 @@ const ProductCard = ({ product }) => {
                   />
                 ) : (
                   <span
+                    key={i}
                     style={{ backgroundColor: `${style.color}` }}
                     className={i == active && styles.active}
                     onMouseOver={() => setActive(i)}

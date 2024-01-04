@@ -4,7 +4,7 @@ import Layout from "../../components/profile/layout";
 import User from "../../models/User";
 import Shipping from "../../components/checkout/shipping";
 import { useState } from "react";
-export default function address({ user, tab }) {
+export default function Address({ user, tab }) {
   const [addresses, setAddresses] = useState(user.currentUser.address);
 
   return (

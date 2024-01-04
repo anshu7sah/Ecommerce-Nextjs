@@ -13,7 +13,7 @@ import axios from "axios";
 import { getSession, signIn } from "next-auth/react";
 import jwt from "jsonwebtoken";
 
-const reset = ({ user_id }) => {
+const Reset = ({ user_id }) => {
   const [password, setPassword] = useState("");
   const [conf_password, setConf_Password] = useState("");
   const [loading, setLoading] = useState(false);
@@ -110,7 +110,7 @@ const reset = ({ user_id }) => {
   );
 };
 
-export default reset;
+export default Reset;
 
 export async function getServerSideProps(context) {
   const { query, req } = context;

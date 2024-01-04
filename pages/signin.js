@@ -26,7 +26,7 @@ const initialvalues = {
   login_error: "",
 };
 
-const signin = ({ providers, callbackUrl, csrfToken }) => {
+const Signin = ({ providers, callbackUrl, csrfToken }) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(initialvalues);
   const {
@@ -130,7 +130,7 @@ const signin = ({ providers, callbackUrl, csrfToken }) => {
               <BiLeftArrowAlt />
             </div>
             <span>
-              We'd be happy to join us ! <Link href="/">Go Store</Link>
+              We&apos;d be happy to join us ! <Link href="/">Go Store</Link>
             </span>
           </div>
           <div className={styles.login__form}>
@@ -263,7 +263,7 @@ const signin = ({ providers, callbackUrl, csrfToken }) => {
   );
 };
 
-export default signin;
+export default Signin;
 
 export async function getServerSideProps(context) {
   const { req, query } = context;

@@ -6,7 +6,7 @@ import { useState } from "react";
 import Create from "../../../components/admin/coupons/Create";
 import List from "../../../components/admin/coupons/List";
 
-export default function coupons({ coupons }) {
+export default function Coupons({ coupons }) {
   const [data, setData] = useState(coupons);
 
   return (

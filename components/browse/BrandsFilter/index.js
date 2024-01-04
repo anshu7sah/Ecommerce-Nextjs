@@ -29,6 +29,7 @@ export default function BrandsFilter({ brands, brandHandler, replaceQuery }) {
 
             return (
               <button
+                key={i}
                 className={`${styles.filter__brand} ${
                   check.active ? styles.activeFilter : ""
                 }`}

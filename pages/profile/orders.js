@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import axios from "axios";
 
-export default function orders({ user, tab, orders }) {
+export default function Orders({ user, tab, orders }) {
   const router = useRouter();
   const [message, setMessage] = useState("");
 

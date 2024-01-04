@@ -111,7 +111,7 @@ export default function Shipping({ addresses, setAddresses, user, profile }) {
       )}
       <div className={styles.addresses}>
         {addresses?.map((address, i) => (
-          <div style={{ position: "relative" }}>
+          <div style={{ position: "relative" }} key={i}>
             <div
               className={styles.address__delete}
               onClick={() => deleteHandler(address._id)}
