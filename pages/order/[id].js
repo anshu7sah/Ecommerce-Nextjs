@@ -24,7 +24,7 @@ function reducer(state, action) {
   }
 }
 
-export default function Order({
+export default function OrderPage({
   orderData,
   paypal_client_id,
   stripe_public_key,

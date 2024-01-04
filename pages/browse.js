@@ -19,7 +19,7 @@ import HeadingFilters from "../components/browse/HeadingFilters";
 import { useRouter } from "next/router";
 import { Pagination } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
-export default function browse({
+export default function Browse({
   subCategories,
   categories,
   products,

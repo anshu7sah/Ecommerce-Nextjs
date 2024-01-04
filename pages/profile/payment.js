@@ -7,7 +7,7 @@ import Payment from "../../components/checkout/payment";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-export default function Payment({ user, tab, defaultPaymentMethod }) {
+export default function PaymentPage({ user, tab, defaultPaymentMethod }) {
   const [dbPM, setDbPM] = useState(defaultPaymentMethod.defaultPaymentMethod);
   const [paymentMethod, setPaymentMethod] = useState(
     defaultPaymentMethod.defaultPaymentMethod
