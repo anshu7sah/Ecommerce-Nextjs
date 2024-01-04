@@ -7,8 +7,9 @@ const router = createRouter();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-const endpointSecret =
-  "whsec_8b92afb014884f4e3b7b4d38ca7b041a270b7d7d40e5fae89f74538ec504a6ab";
+// const endpointSecret =
+//   "whsec_8b92afb014884f4e3b7b4d38ca7b041a270b7d7d40e5fae89f74538ec504a6ab";
+const endpointSecret = process.env.ENDPOINT_SECRET;
 
 router
   //   .use(express.raw({ type: "application/json" }))
