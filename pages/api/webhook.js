@@ -7,9 +7,10 @@ const router = createRouter();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-// const endpointSecret =
-//   "whsec_8b92afb014884f4e3b7b4d38ca7b041a270b7d7d40e5fae89f74538ec504a6ab";
-const endpointSecret = process.env.ENDPOINT_SECRET;
+const endpointSecret =
+  "whsec_8b92afb014884f4e3b7b4d38ca7b041a270b7d7d40e5fae89f74538ec504a6ab";
+
+// const endpointSecret = process.env.ENDPOINT_SECRET;
 
 router
   //   .use(express.raw({ type: "application/json" }))
@@ -39,7 +40,7 @@ router
       case "payment_intent.succeeded":
         await mongoConnect();
         const paymentIntent = event.data.object;
-        console.log(paymentIntent);
+        // console.log(paymentIntent);
         const order_id = paymentIntent.metadata.id;
         const order = await Order.findById(order_id);
         if (order) {
@@ -54,7 +55,7 @@ router
           await order.save();
           await mongoDisconnect();
         } else {
-          res.status(404).json({ message: "Order not found" });
+          response.status(404).json({ message: "Order not found" });
         }
         // Then define and call a method to handle the successful payment intent.
         // handlePaymentIntentSucceeded(paymentIntent);
